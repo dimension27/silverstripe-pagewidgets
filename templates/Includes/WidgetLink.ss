@@ -1,0 +1,1 @@
+<% if LinkURL %><a href="$LinkURL" class="$LinkClass" target="$LinkWindowTarget"<% if LinkRel %> rel="$LinkRel"<% end_if %>>$LinkLabel $LinkSuffix</a><% end_if %>
