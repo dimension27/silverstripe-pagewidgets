@@ -146,23 +146,27 @@ class PageWidget extends DataObject {
 		return in_array($widget->LinkType, array('External', 'File')) ? '_blank' : '';
 	}
 
-	static function set_upload_folder( FileField $field ) {
-		return;
-		$isUploadify = in_array('UploadifyField', class_parents($field));
-		$dir = ($isUploadify ? $field->getUploadFolder() : $field->getFolderName()).'/widgets';
-		if( $subsite = SiteConfig::current_site_config()->Subsite() ) {
-			if( $identifier = $subsite->Identifier ) {
-				$dir .= '/'.$identifier;
-			}
-			else {
-				trigger_error("No identifier specified for subsite '".$subsite->Title."'");
-			}
-		}
-		if( $isUploadify ) {
-			$field->setUploadFolder($dir);
+	static function set_upload_folder( FileField $field, $dataObject = null, $subDir = null ) {
+		if( $dataObject ) {
+			UploadFolderManager::setUploadFolder('PageWidget', $field, $subDir);
 		}
 		else {
-			$field->setFolderName($dir);
+			$isUploadify = in_array('UploadifyField', class_parents($field));
+			$dir = ($isUploadify ? $field->getUploadFolder() : $field->getFolderName()).'/widgets';
+			if( $subsite = SiteConfig::current_site_config()->Subsite() ) {
+				if( $identifier = $subsite->Identifier ) {
+					$dir .= '/'.$identifier;
+				}
+				else {
+					trigger_error("No identifier specified for subsite '".$subsite->Title."'");
+				}
+			}
+			if( $isUploadify ) {
+				$field->setUploadFolder($dir);
+			}
+			else {
+				$field->setFolderName($dir);
+			}
 		}
 	}
 
@@ -316,3 +320,8 @@ class PageWidget extends DataObject {
 	}
 
 }
+
+UploadFolderManager::setOptions('PageWidget', array(
+	'folder' => 'widgets',
+	'subsite' => true
+));

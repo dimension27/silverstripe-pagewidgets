@@ -39,9 +39,16 @@
 	float: right !important;
 	margin: 0 0 10px 10px !important;
 }
-.ie6 .ssForm {
-	margin: 0 !important;
+.ie6 .gridCell.colSpan1 a .suffix,
+.ie7 .gridCell.colSpan1 a .suffix {
+	display: block;
 }
+
+.ie6 .gridCell.colSpan1 a .suffix .file,
+.ie7 .gridCell.colSpan1 a .suffix .file {
+	position: absolute;
+}
+
 .heightAuto {
 	height: auto;
 }

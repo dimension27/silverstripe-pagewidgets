@@ -4,8 +4,9 @@
  */
 class MultiTeaserBlockWidget extends PageWidget {
 
-	static $singular_name = 'Multi-Teaser Block';
-	static $item_relation = 'MultiTeaserImageBlockItems';
+	static $singular_name = 'Multi Teaser Block';
+	static $item_class = 'MultiTeaserBlockItem';
+	static $item_relation = 'MultiTeaserBlockItems';
 	
 	static $has_many = array(
 		'TeaserWidgets' => 'TeaserWidget'
@@ -43,6 +44,12 @@ class MultiTeaserBlockWidget extends PageWidget {
 	 */
 	public function getCMSFields() {
 		$fields = parent::getCMSFields();
+		$plural_name = singleton($this->stat('item_class'))->plural_name();
+		$fields->addFieldToTab('Root.Items', $field = new HelpField(null,
+				'The items inside the multi teaser block are managed through the page form. '
+				.'To add and remove items close this popup and go to the "'.$plural_name
+				.'" tab. If you don\'t see this tab then you may need to Save the page first.'
+		));
 		$fields->addFieldsToTab('Root.Main', array(
 			new CheckboxField('ThreeColumnWidth', 'Use 3-column width?'),
 			new CheckboxField('TwoColumnLayout', 'Layout items in two columns? (4-column width)')
@@ -191,7 +198,8 @@ class MultiTeaserBlockItem extends DataObject {
 
 class MultiTeaserImageBlockWidget extends MultiTeaserBlockWidget {
 
-	static $singular_name = 'Multi-Teaser Block with Thumbnail';
+	static $singular_name = 'Multi-Teaser Image Block';
+	static $item_class = 'MultiTeaserImageBlockItem';
 	static $item_relation = 'MultiTeaserImageBlockItems';
 
 	function CSSClasses() {
@@ -217,7 +225,7 @@ class MultiTeaserImageBlockItem extends MultiTeaserBlockItem {
 	function getCMSFields() {
 		$fields = parent::getCMSFields();
 		$fields->addFieldToTab('Root.Image', $field = new FileUploadField('Image'));
-		PageWidget::set_upload_folder($field);
+		PageWidget::set_upload_folder($field, $this);
 		return $fields;
 	}
 
