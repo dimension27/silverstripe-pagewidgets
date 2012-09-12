@@ -147,27 +147,7 @@ class PageWidget extends DataObject {
 	}
 
 	static function set_upload_folder( FileField $field, $dataObject = null, $subDir = null ) {
-		if( $dataObject ) {
-			UploadFolderManager::setUploadFolder('PageWidget', $field, $subDir);
-		}
-		else {
-			$isUploadify = in_array('UploadifyField', class_parents($field));
-			$dir = ($isUploadify ? $field->getUploadFolder() : $field->getFolderName()).'/widgets';
-			if( $subsite = SiteConfig::current_site_config()->Subsite() ) {
-				if( $identifier = $subsite->Identifier ) {
-					$dir .= '/'.$identifier;
-				}
-				else {
-					trigger_error("No identifier specified for subsite '".$subsite->Title."'");
-				}
-			}
-			if( $isUploadify ) {
-				$field->setUploadFolder($dir);
-			}
-			else {
-				$field->setFolderName($dir);
-			}
-		}
+		UploadFolderManager::setUploadFolder('PageWidget', $field, $subDir);
 	}
 
 	public function LinkURL() {
