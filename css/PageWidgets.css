@@ -205,13 +205,13 @@
 	padding-right: 190px;
 	margin-right: 0;
 }
-.MultiTeaserBlockWidget.FourGridCells li .bd span {
-  position: absolute;
-  right: 0;
-  top: 60px;
-  height: 30px;
-  width: 30px;
-  background: #666;
+.MultiTeaserBlockWidget.FourGridCells li .bd span.arrow {
+	background: url('/pagewidget/images/arrow-button.png') no-repeat;
+	height: 33px;
+	position: absolute;
+	right: 20px;
+	top: 70px;
+	width: 33px;
 }
 .MultiTeaserBlockWidget.colSpan3 li .bd {
 	width: 330px;
@@ -226,9 +226,16 @@
     margin: 4px 0;
     overflow: hidden;
 }
+.MultiTeaserBlockWidget.FourGridCells li .bd p {
+	color: #666;
+	max-height: 85px;
+}
 .MultiTeaserBlockWidget.itemRowSpan1 li .bd p {
 	margin-bottom: 1em;
     max-height: 10em;
+}
+.MultiTeaserBlockWidget.FourGridCells .widget-link {
+	margin-top: 1.8em;
 }
 .NewsWidget .bd {
 	margin: 3px 10px;
