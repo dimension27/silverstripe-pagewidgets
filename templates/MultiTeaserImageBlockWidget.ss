@@ -1,4 +1,4 @@
-<div class="gridCell $CSSClasses">
+<div class="gridCell $WidgetCSSClasses">
 	<% if Header %>
 	<h2>$Header</h2>
 	<% end_if %>
