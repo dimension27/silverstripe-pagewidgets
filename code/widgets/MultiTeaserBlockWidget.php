@@ -7,7 +7,7 @@ class MultiTeaserBlockWidget extends PageWidget {
 	static $singular_name = 'Multi Teaser Block';
 	static $item_class = 'MultiTeaserBlockItem';
 	static $item_relation = 'MultiTeaserBlockItems';
-	
+
 	static $has_many = array(
 		'TeaserWidgets' => 'TeaserWidget'
 	);
@@ -61,7 +61,7 @@ class MultiTeaserBlockWidget extends PageWidget {
 		$fields->addFieldToTab('Root.Advanced', $field = new NumericField('NumItemsPerPage', 'Number of items to display per page'));
 		return $fields;
 	}
-	
+
 	/**
 	 * @param DataObjectSet $items
 	 */
@@ -69,7 +69,7 @@ class MultiTeaserBlockWidget extends PageWidget {
 		$this->items = $items;
 		unset($this->cachedItems);
 	}
-	
+
 	/**
 	 * @return MultiTeaserBlockItem
 	 */
@@ -117,7 +117,7 @@ class MultiTeaserBlockWidget extends PageWidget {
 		}
 		return $rv;
 	}
-	
+
 	/**
 	 * Returns the header or false if it has not been set.
 	 * @return false|string
@@ -126,10 +126,10 @@ class MultiTeaserBlockWidget extends PageWidget {
 	public function Header() {
 		return $this->header;
 	}
-	
+
 	/**
 	 * Set the header text for the widget.
-	 * 
+	 *
 	 * @param string $header
 	 * @return void
 	 * @author Alex Hayes <alex.hayes@dimension27.com>
@@ -143,10 +143,16 @@ class MultiTeaserBlockWidget extends PageWidget {
 		return $rv;
 	}
 
+	public function Widget() {
+		return $this->renderWith(get_class($this), array(
+			'Layout' => $this->Layout
+		));
+	}
+
 }
 
 class MultiTeaserBlockItem extends DataObject {
-	
+
 	static $db = array(
 		'Title' => 'Varchar',
 		'Body' => 'HTMLText',
@@ -156,13 +162,13 @@ class MultiTeaserBlockItem extends DataObject {
 		'Lightbox' => 'Boolean',
 		'OpenInLightbox' => 'Boolean'
 	);
-	
+
 	static $has_one = array(
 		'LinkTarget' => 'SiteTree',
 		'LinkFile' => 'File',
 		'Page' => 'Page',
 	);
-	
+
 	static $limit_words = null;
 
 	/**
@@ -177,7 +183,7 @@ class MultiTeaserBlockItem extends DataObject {
 		PageWidget::add_link_fields($fields);
 		return $fields;
 	}
-	
+
 	public function LinkURL() {
 		return PageWidget::get_link_url($this);
 	}
@@ -193,7 +199,7 @@ class MultiTeaserBlockItem extends DataObject {
 	public function LinkWindowTarget() {
 		return PageWidget::get_link_target($this);
 	}
-	
+
 	function Body( $limit = true ) {
 		$rv = $this->getField('Body');
 		if( $limit && self::$limit_words ) {

@@ -21,6 +21,11 @@
 			</div>
     	<div class="bd">
 	    	<h3>$Title</h3>
+				<% if Layout = FourGridCells %>
+				$SizedImage(350, 170)
+				<% else %>
+				$SizedImage
+				<% end_if %>
 				<% if Lightbox %>
 				$Body
 				<% include WidgetLightBox %>
