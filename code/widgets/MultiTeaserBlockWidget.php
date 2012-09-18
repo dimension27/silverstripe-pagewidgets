@@ -83,6 +83,11 @@ class MultiTeaserBlockWidget extends PageWidget {
 				$item->setImageSize(170, 170);
 			}
 		}
+		elseif( $this->Layout == 'FourGridCells' ) {
+			foreach( $set as $item ) {
+				$item->setImageSize(350, 170);
+			}
+		}
 		if( $this->Page()->$itemRelation('OpenInLightbox = 1', null, null, 1) ) {
 			MediaPage_Controller::add_lightbox_requirements();
 		}

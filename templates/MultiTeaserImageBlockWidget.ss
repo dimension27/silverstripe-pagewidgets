@@ -14,11 +14,7 @@
     		<% if Lightbox %>
 				<a href="#read-more-journal-$iteratorPos" class="lightbox hash-only">
 				<% end_if %>
-				<% if Layout = FourGridCells %>
-				$SizedImage(350, 170)
-				<% else %>
 				$SizedImage
-				<% end_if %>
 				<% if Lightbox %>
 				</a>
 				<% end_if %>	
