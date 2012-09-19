@@ -165,6 +165,9 @@
 .ie6 .MultiTeaserBlockWidget li {
 	margin-bottom: 7px;
 }
+.MultiTeaserBlockWidget.FourGridCells {
+	background: white;
+}
 .MultiTeaserBlockWidget.FourGridCells li {
   height: 170px;
 }
