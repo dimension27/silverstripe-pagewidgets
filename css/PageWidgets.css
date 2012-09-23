@@ -49,11 +49,18 @@
 	position: absolute;
 }
 
+.gridHeight {
+	min-height: 180px;
+}
+
 .heightAuto {
 	height: auto;
 }
 .gridCell.placeholder {
 	background: transparent;
+}
+#bd .colSpan1 {
+	width: 170px;
 }
 .gridCell.colSpan2,
 #bd .colSpan2 {
