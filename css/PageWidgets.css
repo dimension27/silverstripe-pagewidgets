@@ -207,8 +207,9 @@
 	position: relative;
 	padding-right: 190px;
 	margin-right: 0;
+	height: auto;
 }
-.MultiTeaserBlockWidget.FourGridCells li .bd span.arrow {
+.MultiTeaserBlockWidget.FourGridCells li .bd .arrow {
 	background: url('/pagewidget/images/arrow-button.png') no-repeat;
 	height: 33px;
 	position: absolute;
@@ -231,7 +232,7 @@
 }
 .MultiTeaserBlockWidget.FourGridCells li .bd p {
 	color: #666;
-	max-height: 85px;
+	max-height: 95px;
 }
 .MultiTeaserBlockWidget.itemRowSpan1 li .bd p {
 	margin-bottom: 1em;

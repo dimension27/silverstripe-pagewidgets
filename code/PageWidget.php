@@ -60,6 +60,7 @@ class PageWidget extends DataObject {
 					$options[$klass] = $widget->singular_name();
 				}
 			}
+			ksort($options);
 			$fields->addFieldToTab('Root.Main', new DropdownField('ClassName', 'Widget Type', $options));
 		}
 		$fields->addFieldToTab('Root.Main', new TextField('Title'));

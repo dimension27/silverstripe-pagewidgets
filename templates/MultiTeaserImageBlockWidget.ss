@@ -12,13 +12,13 @@
     <li>
     	<div class="image">
     		<% if Lightbox %>
-				<a href="#read-more-journal-$iteratorPos" class="lightbox hash-only">
-				<% end_if %>
-				$SizedImage
-				<% if Lightbox %>
-				</a>
-				<% end_if %>	
-			</div>
+			<a href="#read-more-journal-$iteratorPos" class="lightbox hash-only">
+			<% end_if %>
+			$SizedImage
+			<% if Lightbox %>
+			</a>
+			<% end_if %>	
+		</div>
     	<div class="bd">
 	    	<h3>$Title</h3>
 				<% if Lightbox %>
@@ -28,7 +28,7 @@
 				$Body
 				<% include WidgetLink %>
 				<% end_if %>
-				<span class="arrow"></span>
+				<a href="$LinkURL" class="arrow"></a>
 			</div>
 		</li>
 	<% end_control %>
