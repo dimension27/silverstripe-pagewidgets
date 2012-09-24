@@ -49,57 +49,124 @@
 	position: absolute;
 }
 
-.gridHeight {
-	min-height: 170px;
-}
-
 .heightAuto {
 	height: auto;
 }
+
 .gridCell.placeholder {
 	background: transparent;
 }
+
 #bd .colSpan1 {
 	width: 170px;
 }
+
 .gridCell.colSpan2,
 #bd .colSpan2 {
 	width: 350px;
 }
+
 .gridCell.colSpan3,
 #bd .colSpan3 {
 	width: 530px;
 }
+
 .gridCell.colSpan4,
 #bd .colSpan4 {
 	width: 710px;
 }
-.gridCell.rowSpan2 {
+
+.rowSpan1 {
+	height: 170px;
+}
+
+.rowSpan2 {
 	height: 350px;
 }
-.gridCell.rowSpan3 {
+
+.rowSpan3 {
 	height: 530px;
 }
-.gridCell.rowSpan4 {
+
+.rowSpan4 {
 	height: 710px;
 }
-.gridCell.rowSpan5 {
+
+.rowSpan5 {
 	height: 890px;
 }
-.gridCell.rowSpan6 {
+
+.rowSpan6 {
 	height: 1070px;
 }
-.gridCell.rowSpan7 {
+
+.rowSpan7 {
 	height: 1250px;
 }
-.gridCell.rowSpan8 {
+
+.rowSpan8 {
 	height: 1430px;
 }
-.gridCell.rowSpan9 {
+
+.rowSpan9 {
 	height: 1610px;
 }
-.gridCell.rowSpan10 {
+
+.rowSpan10 {
 	height: 1790px;
+}
+
+.min-rowSpan1 {
+	min-height: 170px;
+}
+
+.min-rowSpan2 {
+	min-height: 350px;
+}
+
+.min-rowSpan3 {
+	min-height: 530px;
+}
+
+.min-rowSpan4 {
+	min-height: 710px;
+}
+
+.min-rowSpan5 {
+	min-height: 890px;
+}
+
+.min-rowSpan6 {
+	min-height: 1070px;
+}
+
+.min-rowSpan7 {
+	min-height: 1250px;
+}
+
+.min-rowSpan8 {
+	min-height: 1430px;
+}
+
+.min-rowSpan9 {
+	min-height: 1610px;
+}
+
+.min-rowSpan10 {
+	min-height: 1790px;
+}
+
+.rowSpan1,
+.rowSpan2,
+.rowSpan3,
+.rowSpan4,
+.rowSpan5,
+.min-rowSpan1,
+.min-rowSpan2,
+.min-rowSpan3,
+.min-rowSpan4,
+.min-rowSpan5 {
+	margin-bottom: 10px;
 }
 
 .gridRow.afterRowSpan2 {
