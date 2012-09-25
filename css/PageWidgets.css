@@ -49,6 +49,22 @@
 	position: absolute;
 }
 
+.gridBottomMargin {
+	margin-bottom: 10px;
+}
+
+.gridLeftMargin {
+	margin-left: 10px;
+}
+
+.gridRightMargin {
+	margin-right: 10px;
+}
+
+.gridMargin {
+	margin: 0 0 10px 10px;
+}
+
 .heightAuto {
 	height: auto;
 }
