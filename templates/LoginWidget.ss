@@ -4,7 +4,7 @@
 		$LoggedInContent
 	<% else %>
 		<h3>Login</h3>
-		<form method="post" action="/Security/LoginForm?BackURL=$BackURL">
+		<form method="post" action="/Security/LoginForm?BackURL=$BackURL" class="no-btn">
 			<div>Email: <input type="text" class="email" name="Email" /></div>
 			<div>Password: <input type="password" class="password" name="Password" /></div>
 			<div class="remember"><input type="checkbox" class="remember-me" name="Remember" /> Remember me?</div>
