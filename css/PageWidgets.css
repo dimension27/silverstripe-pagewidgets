@@ -92,6 +92,19 @@
 	width: 710px;
 }
 
+.rowSpan1,
+.rowSpan2,
+.rowSpan3,
+.rowSpan4,
+.rowSpan5,
+.rowSpan6,
+.rowSpan7,
+.rowSpan8,
+.rowSpan9,
+.rowSpan10 {
+	overflow-y: hidden;
+}
+
 .rowSpan1 {
 	height: 170px;
 }
