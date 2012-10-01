@@ -367,6 +367,10 @@
 	text-decoration: underline;
 }
 
+.gridCell .widget-link > a {
+	white-space: nowrap;
+}
+
 .ie6 .LinkListWidget ul li,
 .ie7 .LinkListWidget ul li {
 	list-style-image: none;
