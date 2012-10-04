@@ -4,11 +4,11 @@
 		$LoggedInContent
 	<% else %>
 		<h3>Login</h3>
-		<form method="post" action="/Security/LoginForm?BackURL=$BackURL">
-			<div>Email: <input type="text" name="Email" /></div>
-			<div>Password: <input type="password" name="Password" /></div>
-			<div class="remember"><input type="checkbox" name="Remember" /> Remember me?</div>
-			<div class="submit"><input type="submit" class="button" value="&raquo; Login" /></div>
+		<form method="post" action="/Security/LoginForm?BackURL=$BackURL" class="no-btn">
+			<div>Email: <input type="text" class="email" name="Email" /></div>
+			<div>Password: <input type="password" class="password" name="Password" /></div>
+			<div class="remember"><input type="checkbox" class="remember-me" name="Remember" /> Remember me?</div>
+			<div class="submit"><input type="submit" class="button login" value="&raquo; Login" /></div>
 		</form>
 		<div class="links">
 			<a class="internal white" href="/Security/lostpassword">Lost password</a>

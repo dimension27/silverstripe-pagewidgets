@@ -49,29 +49,143 @@
 	position: absolute;
 }
 
+.gridBottomMargin {
+	margin-bottom: 10px;
+}
+
+.gridLeftMargin {
+	margin-left: 10px;
+}
+
+.gridRightMargin {
+	margin-right: 10px;
+}
+
+.gridMargin {
+	margin: 0 0 10px 10px;
+}
+
 .heightAuto {
 	height: auto;
 }
+
 .gridCell.placeholder {
 	background: transparent;
 }
+
+#bd .colSpan1 {
+	width: 170px;
+}
+
 .gridCell.colSpan2,
-#bd .colSpa.gridCell.colSpan3,
+#bd .colSpan2 {
+	width: 350px;
+}
+.gridCell.colSpan3,
 #bd .colSpan3 {
 	width: 530px;
 }
-.gridCell.colSpan4,n4 {
+.gridCell.colSpan4,
+#bd .colSpan4 {
 	width: 710px;
 }
-.gridCell.gridCell.rowSpan2 {
+
+.rowSpan1,
+.rowSpan2,
+.rowSpan3,
+.rowSpan4,
+.rowSpan5,
+.rowSpan6,
+.rowSpan7,
+.rowSpan8,
+.rowSpan9,
+.rowSpan10 {
+	overflow-y: hidden;
+}
+
+.gridCell.rowSpan1 {
+	height: 170px;
+}
+
+.gridCell.rowSpan2 {
 	height: 350px;
 }
-.gridCell.rowSpan3 {
+
+.gridCell..rowSpan3 {
 	height: 530px;
 }
-ridCell.gridCell.rowSpan4 1070px;
+.gridCell.rowSpan4 {
+	height: 710px;
 }
-	heiidCell.rowSpan.gridCell.gridCell..gridCell.row6pan5height: {
+.gridCell.rowSpan5 {
+	height: 890px;
+}
+.gridCell.rowSpan6 {
+	height: 1070px;
+}
+.gridCell.rowSpan7 {
+	height: 1250px;
+}
+.gridCell.rowSpan8 {
+	height: 1430px;
+}
+.gridCell.rowSpan9 {
+	height: 1610px;
+}
+.gridCell.rowSpan10 {
+	height: 1790px;
+}
+
+.min-rowSpan2 {
+	min-height: 350px;
+}
+
+.min-rowSpan3 {
+	min-height: 530px;
+}
+
+.min-rowSpan4 {
+	min-height: 710px;
+}
+
+.min-rowSpan5 {
+	min-height: 890px;
+}
+
+.min-rowSpan6 {
+	min-height: 1070px;
+}
+
+.min-rowSpan7 {
+	min-height: 1250px;
+}
+
+.min-rowSpan8 {
+	min-height: 1430px;
+}
+
+.min-rowSpan9 {
+	min-height: 1610px;
+}
+
+.min-rowSpan10 {
+	min-height: 1790px;
+}
+
+.rowSpan1,
+.rowSpan2,
+.rowSpan3,
+.rowSpan4,
+.rowSpan5,
+.min-rowSpan1,
+.min-rowSpan2,
+.min-rowSpan3,
+.min-rowSpan4,
+.min-rowSpan5 {
+	margin-bottom: 10px;
+}
+
+.gridRow.afterRowSpan2 {
 	margin-top: -180px;
 }
 .gridRow.afterRowSpan3 {
@@ -144,9 +258,27 @@ ridCell.gridCell.rowSpan4 1070px;
 .MultiTeaserBlockWidget.TwoColumnLayout {
     background: transparent;
     margin-right: -10px;
-	width: 720px;
+    width: 720px;
 }
 .MultiTeaserBlockWidget.TwoColumnLayout li {
+	height: 170px;
+    margin-bottom: 10px;
+    width: 350px;
+    float: left;
+}
+
+.MultiTeaserBlockWidget.FourGridCells {
+	background: white;
+}
+.MultiTeaserBlockWidget.FourGridCells li {
+  height: 170px;
+}
+.MultiTeaserBlockWidget.FourGridCellsTwoColumn {
+    background: transparent;
+    margin-right: -10px;
+	width: 720px;
+}
+.MultiTeaserBlockWidget.FourGridCellsTwoColumn li {
 	height: 170px;
     margin-bottom: 10px;
     width: 350px;
@@ -163,13 +295,31 @@ ridCell.gridCell.rowSpan4 1070px;
 .MultiTeaserImageBlockWidget.itemRowSpan1 li .image {
 	height: 160px;
 }
+.MultiTeaserImageBlockWidget.FourGridCells li .image {
+	height: 160px;
+	width: 350px;
+}
 .MultiTeaserBlockWidget li .bd {
 	float: left;
 	width: 150px;
 	height: 73px;
 	margin: 5px 10px 0 20px;
 }
-.MultiTeaserBlockWidget.i .bd {
+.MultiTeaserBlockWidget.FourGridCells li .bd {
+	position: relative;
+	padding-right: 190px;
+	margin-right: 0;
+	height: auto;
+}
+.MultiTeaserBlockWidget.FourGridCells li .bd .arrow {
+	background: url('/pagewidget/images/arrow-button.png') no-repeat;
+	height: 33px;
+	position: absolute;
+	right: 20px;
+	top: 70px;
+	width: 33px;
+}
+.MultiTeaserBlockWidget.colSpan3 li .bd {
 	width: 330px;
 }
 .MultiTeaserBlockWidget li .bd h3 {
@@ -182,9 +332,16 @@ ridCell.gridCell.rowSpan4 1070px;
     margin: 4px 0;
     overflow: hidden;
 }
+.MultiTeaserBlockWidget.FourGridCells li .bd p {
+	color: #666;
+	max-height: 95px;
+}
 .MultiTeaserBlockWidget.itemRowSpan1 li .bd p {
 	margin-bottom: 1em;
     max-height: 10em;
+}
+.MultiTeaserBlockWidget.FourGridCells .widget-link {
+	margin-top: 1.8em;
 }
 .NewsWidget .bd {
 	margin: 3px 10px;
@@ -207,6 +364,10 @@ ridCell.gridCell.rowSpan4 1070px;
 }
 .gridCell a:hover {
 	text-decoration: underline;
+}
+
+.gridCell .widget-link > a {
+	white-space: nowrap;
 }
 
 .ie6 .LinkListWidget ul li,
@@ -312,9 +473,14 @@ ridCell.gridCell.rowSpan4 1070px;
 .QuickFinderWidget input {
 	width: 140px;
 }
-.QuickFinderWidget select 
+.QuickFinderWidget select {
+	width: 144px;
+}
 .ImageWidget a {
 	padding: 0 !important;
 	background: transparent;
 
+}
+.gridHeight {
+	height: 170px;
 }

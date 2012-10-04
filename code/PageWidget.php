@@ -60,6 +60,7 @@ class PageWidget extends DataObject {
 					$options[$klass] = $widget->singular_name();
 				}
 			}
+			ksort($options);
 			$fields->addFieldToTab('Root.Main', new DropdownField('ClassName', 'Widget Type', $options));
 		}
 		$fields->addFieldToTab('Root.Main', new TextField('Title'));
@@ -228,7 +229,7 @@ class PageWidget extends DataObject {
 		}
 		else {
 			$sizes = array(' Bytes', ' KB', ' MB', ' GB', ' TB', ' PB', ' EB', ' ZB', ' YB');
-			return (round($size/pow(1024, ($i = floor(log($size, 1024)))), $i > 1 ? 2 : 0) . $sizes[$i]);
+			return (round($size/pow(1024, ($i = floor(log($size, 1024)))), $i > 1 ? 1 : 0) . $sizes[$i]);
 		}
 	}
 
