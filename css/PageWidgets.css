@@ -111,7 +111,7 @@
 	height: 350px;
 }
 
-.gridCell..rowSpan3 {
+.gridCell.rowSpan3 {
 	height: 530px;
 }
 .gridCell.rowSpan4 {
@@ -292,9 +292,16 @@
 	height: 80px;
 	float: left;
 }
-.MultiTeaserImageBlockWidget.itemRowSpan1 li .image {
-	height: 160px;
+.MultiTeaserImageBlockWidget.itemRowSpan1 li,
+.MultiTeaserImageBlockWidget.itemRowSpan1 li .image,
+.MultiTeaserImageBlockWidget.itemRowSpan1 li .bd {
+	height: 170px;
 }
+.MultiTeaserImageBlockWidget.itemRowSpan1 li .bd .overflow-hidden {
+	max-height: 149px;
+	overflow: hidden;
+}
+
 .MultiTeaserImageBlockWidget.FourGridCells li .image {
 	height: 160px;
 	width: 350px;
@@ -323,7 +330,7 @@
 	width: 330px;
 }
 .MultiTeaserBlockWidget li .bd h3 {
-	height: 18px;
+	min-height: 18px;
     margin-bottom: 2px;
     overflow: hidden;
 }
