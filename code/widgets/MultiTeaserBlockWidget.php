@@ -141,11 +141,8 @@ class MultiTeaserBlockWidget extends PageWidget {
 		return $rv;
 	}
 
-	public function Widget() {
-		return $this->renderWith(get_class($this), array(
-			'Layout' => $this->Layout,
-			'WidgetCSSClasses' => $this->CSSClasses()
-		));
+	public function WidgetCSSClasses() {
+		return $this->CSSClasses();
 	}
 
 }
