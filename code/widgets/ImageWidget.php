@@ -22,7 +22,7 @@ class ImageWidget extends PageWidget {
 
 	public function SizedImage( $width, $height ) {
 		$rv = parent::SizedImage($width, $height);
-		if( $this->LinkURL() ) {
+		if( $this->LinkURL() && $rv ) {
 			$rv = $this->Anchor($rv->forTemplate());
 		}
 		return $rv;
