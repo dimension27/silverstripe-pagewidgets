@@ -21,7 +21,7 @@ class MultiTeaserImageBlockWidget extends MultiTeaserBlockWidget {
 	public function Items() {
 		$set = parent::Items();
 		// two column layout uses square image
-		if( $this->Layout == 'FourGridCellsTwoColumn' ) {
+		if( in_array($this->Layout, array('FourGridCellsTwoColumn', 'ThreeColumns')) ) {
 			foreach( $set as $item ) {
 				$item->setImageSize(170, 170);
 			}

@@ -350,6 +350,23 @@
 .MultiTeaserBlockWidget.FourGridCells .widget-link {
 	margin-top: 1.8em;
 }
+.MultiTeaserBlockWidget.ThreeColumns ul {
+	margin-right: -10px;
+}
+.MultiTeaserBlockWidget.ThreeColumns li {
+	width: 170px;
+	margin-right: 10px;
+	height: 350px;
+	float: left;
+}
+.MultiTeaserBlockWidget.ThreeColumns li .bd {
+	width: 150px;
+	margin: 20px 10px 0;
+}
+.MultiTeaserImageBlockWidget.ThreeColumns li .image {
+	height: 170px;
+}
+
 .NewsWidget .bd {
 	margin: 3px 10px;
 }
@@ -490,4 +507,30 @@
 }
 .gridHeight {
 	height: 170px;
+}
+
+.CarouselWidget {
+	overflow: visible;
+}
+.CarouselWidget .carousel-control {
+	background: url('../images/sprite.png') no-repeat;
+	height: 26px;
+	width: 26px;
+	opacity: 1;
+	top: 43px;
+	border: 0;
+}
+.CarouselWidget .carousel-control.left {
+	background-position: 0 0;
+	left: -6px;
+}
+.CarouselWidget .carousel-control.left:hover {
+	background-position: 0 -27px;
+}
+.CarouselWidget .carousel-control.right {
+	background-position: -27px 0;
+	right: -6px;
+}
+.CarouselWidget .carousel-control.right:hover {
+	background-position: -27px -27px;
 }

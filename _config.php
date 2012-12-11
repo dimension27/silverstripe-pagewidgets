@@ -1,5 +1,6 @@
 <?php
 SiteTree::add_extension('Page', 'PageWidgetDecorator');
-SortableDataObject::add_sortable_class('LinkListItem');
-SortableDataObject::add_sortable_class('MultiTeaserBlockItem');
-SortableDataObject::add_sortable_class('MultiTeaserImageBlockItem');
+SortableDataObject::add_sortable_classes(array(
+	'LinkListItem', 'MultiTeaserBlockItem', 'MultiTeaserImageBlockItem',
+	'CarouselWidgetItem'
+));

@@ -2,7 +2,9 @@
 
 class TeaserImageCarouselWidget extends ImageCarouselWidget {
 
+	static $singular_name = 'Teaser Image Carousel Widget';
 	static $item_class = 'TeaserImageCarouselItem';
+	static $item_relation = 'TeaserImageCarouselItems';
 	static $has_many = array(
 		'Images' => 'TeaserImageCarouselItem'
 	);
@@ -11,7 +13,7 @@ class TeaserImageCarouselWidget extends ImageCarouselWidget {
 		$set = parent::Items();
 		if( $this->Layout == 'OneCell' ) {
 			foreach( $set as $item ) {
-				$item->setImageSize(170, 170);
+				$item->setImageSize(170, 80);
 			}
 		}
 		return $set;
@@ -19,10 +21,12 @@ class TeaserImageCarouselWidget extends ImageCarouselWidget {
 
 }
 
-class TeaserImageCarouselItem extends TeaserImageWidget {
+class TeaserImageCarouselItem extends MultiTeaserImageBlockItem {
 
-	static $has_one = array(
-		'Page' => 'Page'
-	);
+	public function getCMSFields() {
+		$fields = parent::getCMSFields();
+		$fields->addFieldToTab('Root.Main', new TextareaField('Body'));
+		return $fields;
+	}
 
 }

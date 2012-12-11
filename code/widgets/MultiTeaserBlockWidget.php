@@ -13,7 +13,7 @@ class MultiTeaserBlockWidget extends PageWidget {
 	);
 
 	static $db = array(
-		'Layout' => 'Enum("TwoGridCells,ThreeGridCells,FourGridCells,FourGridCellsTwoColumn")',
+		'Layout' => 'Enum("TwoGridCells,ThreeGridCells,FourGridCells,FourGridCellsTwoColumn,ThreeColumns")',
 		'ThreeColumnWidth' => 'Boolean',
 		'TwoColumnLayout' => 'Boolean',
 		'NumItemsPerPage' => 'Int',
@@ -57,6 +57,7 @@ class MultiTeaserBlockWidget extends PageWidget {
 			'ThreeGridCells' => '3 grid cells wide, one small image and wide text',
 			'FourGridCells' => '4 grid cells wide, one square image, text and an arrow',
 			'FourGridCellsTwoColumn' => '2 columns of one small image and text',
+			'ThreeColumns' => '3 columns with images above the text',
 		));
 		$fields->addFieldToTab('Root.Advanced', $field = new NumericField('NumItemsPerPage', 'Number of items to display per page'));
 		return $fields;
@@ -91,7 +92,11 @@ class MultiTeaserBlockWidget extends PageWidget {
 		$items = $this->Items();
 		// workaround for an issue with LazyLoadComponentSet->Count()
 		if( method_exists($items, 'reset') ) $items->reset();
-		if( ($this->Layout == 'FourGridCells') || preg_match('/itemRowSpan1/', $this->extraCSSClasses) ) {
+		if( $this->Layout == 'ThreeColumns' ) {
+			$rv = ceil($items->Count() / 3) * 2;
+		}
+		else if( ($this->Layout == 'FourGridCells')
+				|| preg_match('/itemRowSpan1/', $this->extraCSSClasses) ) {
 			$rv = $items->Count();
 		}
 		else {
@@ -101,7 +106,10 @@ class MultiTeaserBlockWidget extends PageWidget {
 	}
 
 	public function ColSpan() {
-		if( $this->ColSpan ) {
+		if( $this->Layout == 'ThreeColumns' ) {
+			$rv = 3;
+		}
+		else if( $this->ColSpan ) {
 			$rv = $this->ColSpan;
 		}
 		else if( $this->Layout == 'ThreeGridCells' ) {

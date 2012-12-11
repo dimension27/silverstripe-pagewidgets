@@ -1,10 +1,10 @@
 <?php
 
-abstract class CarouselWidget extends PageWidget {
+class CarouselWidget extends PageWidget {
 
 	static $singular_name = 'Carousel Widget';
 	static $item_class = null;
-	static $item_relation = 'MultiTeaserImageBlockItems';
+	static $item_relation = null;
 	static $has_many = null;
 	static $db = array(
 		'Layout' => 'Enum("OneCell")',
@@ -28,11 +28,12 @@ abstract class CarouselWidget extends PageWidget {
 	public $addRowSpan = 0;
 
 	function CSSClasses() {
-		return 'carousel slide '.parent::CSSClasses();
+		return 'carousel slide CarouselWidget '.parent::CSSClasses();
 	}
 
 	public function allowCreate() {
-		return false;
+		// this is an 'abstract' class
+		return get_class($this) != 'CarouselWidget';
 	}
 
 	/**
@@ -78,53 +79,20 @@ abstract class CarouselWidget extends PageWidget {
 
 }
 
-class MultiTeaserImageBlockItem extends MultiTeaserBlockItem {
+class CarouselWidgetItem extends DataObject {
 
 	static $has_one = array(
-			'Image' => 'BetterImage'
+		'Page' => 'Page'
 	);
 
-	public $imageWidth;
-	public $imageHeight;
+	static $db = array(
+		'Title' => 'Text',
+	);
 
-	static $image_width = 170;
-	static $image_height = 80;
-
-	/**
-	 * @return FieldSet
-	 */
-	function getCMSFields() {
-		$fields = parent::getCMSFields();
-		$fields->addFieldToTab('Root.Image', $field = new FileUploadField('Image'));
-		PageWidget::set_upload_folder($field, $this);
+	public function getCMSFields() {
+		$fields = FormUtils::createMain();
+		$fields->addFieldToTab('Root.Main', $field = new TextField('Title'));
 		return $fields;
-	}
-
-	/**
-	 * @param $width
-	 * @param $height
-	 * @return CroppedImage
-	 */
-	function SizedImage( $width = null, $height = null ) {
-		if( !$width ) {
-			$width = $this->imageWidth ? $this->imageWidth : self::$image_width;
-		}
-		if( !$height ) {
-			$height = $this->imageHeight ? $this->imageHeight : self::$image_height;
-		}
-		if( $image = $this->Image() ) {
-			return $image->SetCroppedSize($width, $height);
-		}
-	}
-
-	static function set_image_size( $width, $height ) {
-		self::$image_width = $width;
-		self::$image_height = $height;
-	}
-
-	function setImageSize( $width, $height ) {
-		$this->imageWidth = $width;
-		$this->imageHeight = $height;
 	}
 
 }

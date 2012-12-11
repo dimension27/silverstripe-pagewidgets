@@ -48,4 +48,5 @@ class TeaserImageWidget extends TeaserWidget {
 		self::set_upload_folder($field);
 		return $fields;
 	}
+
 }

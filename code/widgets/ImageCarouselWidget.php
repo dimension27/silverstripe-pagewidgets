@@ -2,7 +2,9 @@
 
 class ImageCarouselWidget extends CarouselWidget {
 
-	static $item_class = 'ImageCarouselItem';
+	static $singular_name = 'Image Carousel Widget';
+	static $item_class = 'ImageCarouselWidgetItem';
+	static $item_relation = 'ImageCarouselWidgetItems';
 	static $has_many = array(
 		'Images' => 'ImageCarouselWidgetItem'
 	);
@@ -19,10 +21,28 @@ class ImageCarouselWidget extends CarouselWidget {
 
 }
 
-class ImageCarouselItem extends ImageWidget {
+class ImageCarouselWidgetItem extends CarouselWidgetItem {
 
 	static $has_one = array(
-		'Page' => 'Page'
+		'Image' => 'BetterImage',
+		'LinkTarget' => 'SiteTree',
+		'LinkFile' => 'File',
 	);
+
+	static $db = array(
+		'Title' => 'Varchar',
+		'LinkLabel' => 'Varchar',
+		'LinkType' => 'Enum("Internal, External, File")',
+		'LinkTargetURL' => 'Varchar(255)',
+		'OpenInLightbox' => 'Boolean',
+	);
+
+	public function getCMSFields() {
+		$fields = parent::getCMSFields();
+		$fields->addFieldToTab('Root.Image', $field = new FileUploadField('Image'));
+		PageWidget::set_upload_folder($field);
+		PageWidget::add_link_fields($fields);
+		return $fields;
+	}
 
 }

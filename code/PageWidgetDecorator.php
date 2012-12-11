@@ -11,7 +11,9 @@ class PageWidgetDecorator extends SiteTreeDecorator {
 				'Widgets' => 'PageWidget',
 				'LinkListItems' => 'LinkListItem',
 				'MultiTeaserBlockItems' => 'MultiTeaserBlockItem',
-				'MultiTeaserImageBlockItems' => 'MultiTeaserImageBlockItem'
+				'MultiTeaserImageBlockItems' => 'MultiTeaserImageBlockItem',
+				'ImageCarouselItems' => 'ImageCarouselItem',
+				'TeaserImageCarouselItems' => 'TeaserImageCarouselItem',
 			),
 			'many_many' => array(
 				'LibraryWidgets' => 'PageWidget',
@@ -62,6 +64,16 @@ class PageWidgetDecorator extends SiteTreeDecorator {
 		$this->handleTabForWidgetItems($fields, 'MultiTeaserImageBlockWidget', 'MultiTeaserImageBlockItems', 
 			'MultiTeaserImageBlockItem'
 		);
+		// ImageCarouselItems
+		$this->handleTabForWidgetItems(
+				$fields, 'ImageCarouselWidget', 'ImageCarouselItems', 'ImageCarouselItem',
+				array('Title' => 'Title'), true
+		);
+		// TeaserImageCarouselItems
+		$this->handleTabForWidgetItems(
+				$fields, 'TeaserImageCarouselWidget', 'TeaserImageCarouselItems', 
+				'TeaserImageCarouselItem', array('Title' => 'Title'), true
+		);
 		// add a Content Widget tab for editing the ContentWidget content
 		$widget = $this->owner->Widgets("`ClassName` = 'ContentWidget'");
 		if( $widget->count() ) {
@@ -79,7 +91,8 @@ class PageWidgetDecorator extends SiteTreeDecorator {
 		}
 		$widgets = $this->owner->Widgets(
 			"`ClassName` IN ('".implode("', '", $classes)."')"
-			.($excludeSubClasses ? " AND `ClassName` NOT IN ('".implode("', '", $excludeSubClasses)."')" : '')
+			.($excludeSubClasses ? " AND `ClassName` NOT IN ('"
+					.implode("', '", $excludeSubClasses)."')" : '')
 		);
 		if( $widgets->count() ) {
 			$items = new DataObjectManager(
