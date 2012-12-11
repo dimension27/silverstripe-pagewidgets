@@ -5,7 +5,7 @@
 			<div class="image">$SizedImage(400, 300)</div>
 			<div class="bd">
 		    	<h3>$Title</h3>
-				<p>$Body</p>
+				<p>$FullBody</p>
 				<% include WidgetLink %>
 			</div>
 		</div>

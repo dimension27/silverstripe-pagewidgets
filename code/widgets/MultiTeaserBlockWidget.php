@@ -178,7 +178,7 @@ class MultiTeaserBlockItem extends DataObject {
 	/**
 	 * @return FieldSet
 	 */
-	function getCMSFields() {
+	public function getCMSFields() {
 		$fields = new FieldSet();
 		$fields->push(new TabSet("Root", $mainTab = new Tab("Main")));
 		$mainTab->setTitle(_t('SiteTree.TABMAIN', "Main"));
@@ -204,7 +204,7 @@ class MultiTeaserBlockItem extends DataObject {
 		return PageWidget::get_link_target($this);
 	}
 
-	function Body( $limit = true ) {
+	public function Body( $limit = true ) {
 		$rv = $this->getField('Body');
 		if( $limit && self::$limit_words ) {
 			$obj = new Text();
@@ -214,5 +214,13 @@ class MultiTeaserBlockItem extends DataObject {
 		return $rv;
 	}
 
+	/**
+	 * Helper method for template calls
+	 * @return string
+	 * @author Adam Rice <development@hashnotadam.com>
+	 */
+	public function FullBody() {
+		return $this->Body(false);
+	}
 }
 
