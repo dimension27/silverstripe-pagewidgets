@@ -241,6 +241,12 @@
 	line-height: 1.4;
 }
 
+.MultiTeaserBlockWidget {
+	overflow: visible;
+}
+.MultiTeaserBlockWidget h2.header {
+	margin-top: -20px;
+}
 .MultiTeaserBlockWidget ul,
 .MultiTeaserBlockWidget li {
 	margin: 0;
@@ -361,10 +367,13 @@
 }
 .MultiTeaserBlockWidget.ThreeColumns li .bd {
 	width: 150px;
-	margin: 20px 10px 0;
+	margin: 10px 10px 0;
 }
 .MultiTeaserImageBlockWidget.ThreeColumns li .image {
 	height: 170px;
+}
+.MultiTeaserBlockWidget.ThreeColumns li h4 {
+	margin-top: -5px;
 }
 
 .NewsWidget .bd {

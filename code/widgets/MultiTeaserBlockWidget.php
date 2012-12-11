@@ -17,6 +17,7 @@ class MultiTeaserBlockWidget extends PageWidget {
 		'ThreeColumnWidth' => 'Boolean',
 		'TwoColumnLayout' => 'Boolean',
 		'NumItemsPerPage' => 'Int',
+		'Header' => 'Text',
 	);
 
 	static $defaults = array(
@@ -33,11 +34,6 @@ class MultiTeaserBlockWidget extends PageWidget {
 	 */
 	protected $cachedItems;
 
-	/**
-	 * @var string
-	 */
-	protected $header = false;
-
 	public $addRowSpan = 0;
 
 	/**
@@ -45,6 +41,8 @@ class MultiTeaserBlockWidget extends PageWidget {
 	 */
 	public function getCMSFields() {
 		$fields = parent::getCMSFields();
+		$fields->addFieldToTab('Root.Main', $field = new TextField('Header', 'Heading'));
+		$fields->addFieldToTab('Root.Main', $field = new HelpField(null, 'Adds a heading above the block'));
 		$plural_name = singleton($this->stat('item_class'))->plural_name();
 		$fields->addFieldToTab('Root.Items', $field = new HelpField(null,
 				'The items inside the multi teaser block are managed through the page form. '
@@ -80,7 +78,8 @@ class MultiTeaserBlockWidget extends PageWidget {
 	 */
 	public function Items() {
 		$itemRelation = $this->stat('item_relation');
-		$set = ($this->items ? $this->items : $this->Page()->$itemRelation()); /* @var $set DataObjectSet */
+		$filter = "ParentWidgetID IS NULL OR ParentWidgetID = '$this->ID'";
+		$set = ($this->items ? $this->items : $this->Page()->$itemRelation($filter)); /* @var $set DataObjectSet */
 		$set->setPageLimits((int) @$_GET['start'], 10, 10);
 		if( $this->Page()->$itemRelation('OpenInLightbox = 1', null, null, 1) ) {
 			MediaPage_Controller::add_lightbox_requirements();
@@ -124,26 +123,6 @@ class MultiTeaserBlockWidget extends PageWidget {
 		return $rv;
 	}
 
-	/**
-	 * Returns the header or false if it has not been set.
-	 * @return false|string
-	 * @author Alex Hayes <alex.hayes@dimension27.com>
-	 */
-	public function Header() {
-		return $this->header;
-	}
-
-	/**
-	 * Set the header text for the widget.
-	 *
-	 * @param string $header
-	 * @return void
-	 * @author Alex Hayes <alex.hayes@dimension27.com>
-	 */
-	public function setHeader($header) {
-		$this->header = $header;
-	}
-
 	public function CSSClasses() {
 		$rv = parent::CSSClasses().' '.$this->Layout;
 		return $rv;
@@ -171,6 +150,12 @@ class MultiTeaserBlockItem extends DataObject {
 		'LinkTarget' => 'SiteTree',
 		'LinkFile' => 'File',
 		'Page' => 'Page',
+		'ParentWidget' => 'MultiTeaserBlockWidget',
+	);
+
+	static $summary_fields = array(
+		'Title' => 'Title',
+		'ParentWidget.Title' => 'Widget'
 	);
 
 	static $limit_words = null;
@@ -185,6 +170,22 @@ class MultiTeaserBlockItem extends DataObject {
 		$fields->addFieldToTab('Root.Main', $field = new TextField('Title'));
 		$fields->addFieldToTab('Root.Main', $field = new SimpleTinyMCEField('Body'));
 		PageWidget::add_link_fields($fields);
+		$classes = ClassInfo::subclassesFor('MultiTeaserBlockWidget');
+		$widgets = $this->Page()->Widgets("ClassName IN ('".implode("', '", $classes)."')");
+		if( $widgets->Count() > 1 ) {
+			$fields->addFieldToTab('Root.Main', 
+				$field = new DropdownField('ParentWidgetID', 'Display in Widget')
+			);
+			$field->setSource($widgets->map());
+			$fields->addFieldToTab('Root.Main', $field = new HelpField(
+				null, 'Controls which widget this item is displayed in'
+			));
+		}
+		else if( $widget = $widgets->First() ) {
+			$fields->addFieldToTab('Root.Main', 
+				$field = new HiddenField('ParentWidgetID', null, $widget->ID)
+			);
+		}
 		return $fields;
 	}
 
