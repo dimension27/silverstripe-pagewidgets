@@ -80,11 +80,32 @@ class MultiTeaserBlockWidget extends PageWidget {
 		$itemRelation = $this->stat('item_relation');
 		$filter = "ParentWidgetID IS NULL OR ParentWidgetID = '$this->ID'";
 		$set = ($this->items ? $this->items : $this->Page()->$itemRelation($filter)); /* @var $set DataObjectSet */
-		$set->setPageLimits((int) @$_GET['start'], 10, 10);
+		$set->setPageLimits((int) @$_GET['start'], $this->getPageLength(), $this->getTotalSize());
 		if( $this->Page()->$itemRelation('OpenInLightbox = 1', null, null, 1) ) {
 			MediaPage_Controller::add_lightbox_requirements();
 		}
 		return $set;
+	}
+
+	public function setPageLimits($pageLength, $totalSize) {
+		$this->setPageLength($pageLength);
+		$this->setTotalSize($totalSize);
+	}
+
+	public function getPageLength() {
+		return isset($this->pageLength) ? $this->pageLength : 10;
+	}
+
+	public function getTotalSize() {
+		return isset($this->totalSize) ? $this->totalSize : 10;
+	}
+
+	public function setPageLength( $pageLength ) {
+		return $this->pageLength = $pageLength;
+	}
+
+	public function setTotalSize( $totalSize ) {
+		return $this->totalSize = $totalSize;
 	}
 
 	public function RowSpan() {
