@@ -93,11 +93,11 @@ class MultiTeaserBlockWidget extends PageWidget {
 	}
 
 	public function getPageLength() {
-		return isset($this->pageLength) ? $this->pageLength : 10;
+		return !empty($this->pageLength) ? $this->pageLength : 10;
 	}
 
 	public function getTotalSize() {
-		return isset($this->totalSize) ? $this->totalSize : 10;
+		return !empty($this->totalSize) ? $this->totalSize : 10;
 	}
 
 	public function setPageLength( $pageLength ) {
@@ -151,6 +151,10 @@ class MultiTeaserBlockWidget extends PageWidget {
 
 	public function WidgetCSSClasses() {
 		return $this->CSSClasses();
+	}
+
+	public function setHeader( $header ) {
+		$this->Header = $header;
 	}
 
 }

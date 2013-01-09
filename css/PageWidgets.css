@@ -245,7 +245,8 @@
 	overflow: visible;
 }
 .MultiTeaserBlockWidget h2.header {
-	margin-top: -20px;
+	margin: -28px 0 6px 0;
+	padding-left: 0;
 }
 .MultiTeaserBlockWidget ul,
 .MultiTeaserBlockWidget li {
