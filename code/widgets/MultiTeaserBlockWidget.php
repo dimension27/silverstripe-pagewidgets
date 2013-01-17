@@ -78,7 +78,7 @@ class MultiTeaserBlockWidget extends PageWidget {
 	 */
 	public function Items() {
 		$itemRelation = $this->stat('item_relation');
-		$filter = "ParentWidgetID IS NULL OR ParentWidgetID = '$this->ID'";
+		$filter = "ParentWidgetID IN (0, $this->ID)";
 		$set = ($this->items ? $this->items : $this->Page()->$itemRelation($filter)); /* @var $set DataObjectSet */
 		$set->setPageLimits((int) @$_GET['start'], $this->getPageLength(), $this->getTotalSize());
 		if( $this->Page()->$itemRelation('OpenInLightbox = 1', null, null, 1) ) {
