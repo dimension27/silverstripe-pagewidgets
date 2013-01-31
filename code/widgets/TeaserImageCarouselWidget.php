@@ -25,6 +25,8 @@ class TeaserImageCarouselItem extends MultiTeaserImageBlockItem {
 
 	public function getCMSFields() {
 		$fields = parent::getCMSFields();
+		$fields->removeByName('ParentWidgetID');
+		$fields->removeByName('ParentWidgetHelp');
 		$fields->addFieldToTab('Root.Main', new TextareaField('Body'));
 		return $fields;
 	}

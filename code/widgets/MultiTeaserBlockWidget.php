@@ -78,7 +78,8 @@ class MultiTeaserBlockWidget extends PageWidget {
 	 */
 	public function Items() {
 		$itemRelation = $this->stat('item_relation');
-		$filter = "ParentWidgetID IN (0, $this->ID)";
+		$itemClass = $this->stat('item_class');
+		$filter = "ClassName = '$itemClass' AND ParentWidgetID IN (0, $this->ID)";
 		$set = ($this->items ? $this->items : $this->Page()->$itemRelation($filter)); /* @var $set DataObjectSet */
 		$set->setPageLimits((int) @$_GET['start'], $this->getPageLength(), $this->getTotalSize());
 		if( $this->Page()->$itemRelation('OpenInLightbox = 1', null, null, 1) ) {
@@ -203,7 +204,7 @@ class MultiTeaserBlockItem extends DataObject {
 			);
 			$field->setSource($widgets->map());
 			$fields->addFieldToTab('Root.Main', $field = new HelpField(
-				null, 'Controls which widget this item is displayed in'
+				'ParentWidgetHelp', 'Controls which widget this item is displayed in'
 			));
 		}
 		else if( $widget = $widgets->First() ) {
