@@ -31,7 +31,7 @@
 						</div>
 						<% include WidgetLink %>
 						<% end_if %>
-					<a href="$LinkURL" class="arrow"></a>
+					<a href="$LinkURL" class="arrow<% if OpenInLightbox %> lightbox<% end_if %>"></a>
 				</div>
 			</li>
 		<% end_control %>
