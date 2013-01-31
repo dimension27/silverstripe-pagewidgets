@@ -58,8 +58,8 @@ class CarouselWidget extends PageWidget {
 	 * @return MultiTeaserBlockItem
 	 */
 	public function Items() {
-		Requirements::javascript('mysite/js/bootstrap.min.js');
-		Requirements::css('mysite/css/bootstrap/css/bootstrap.css');
+		Requirements::javascript('pagewidget/js/bootstrap.min.js');
+		Requirements::css('pagewidget/css/bootstrap-carousel.css');
 		$itemRelation = $this->stat('item_relation');
 		$set = ($this->items ? $this->items : $this->Page()->$itemRelation()); /* @var $set DataObjectSet */
 		$set->setPageLimits((int) @$_GET['start'], 10, 10);
