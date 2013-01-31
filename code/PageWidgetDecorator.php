@@ -12,7 +12,7 @@ class PageWidgetDecorator extends SiteTreeDecorator {
 				'LinkListItems' => 'LinkListItem',
 				'MultiTeaserBlockItems' => 'MultiTeaserBlockItem',
 				'MultiTeaserImageBlockItems' => 'MultiTeaserImageBlockItem',
-				'ImageCarouselItems' => 'ImageCarouselItem',
+				'ImageCarouselWidgetItems' => 'ImageCarouselWidgetItem',
 				'TeaserImageCarouselItems' => 'TeaserImageCarouselItem',
 			),
 			'many_many' => array(
